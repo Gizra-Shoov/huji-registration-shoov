@@ -1,0 +1,10 @@
+{
+  "name": "Behat tests for http://dev-huji-reg.pantheon.io",
+  "description": "Functional testing for http://dev-huji-reg.pantheon.io site.",
+  "require": {
+    "drupal/drupal-extension": "~3.0"
+  },
+  "config": {
+    "bin-dir": "bin/"
+  }
+}
