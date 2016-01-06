@@ -35,4 +35,24 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   public function iShouldNotHaveAccessToThePage() {
     $this->assertSession()->statusCodeEquals('403');
   }
+
+  /**
+   * @When I click How to Register link
+   */
+  public function iClickHowToRegisterLink()
+  {
+    $element = $this->getSession()->getPage();
+    $link = $element->find('css','#items-wrapper > div.pencil-scale.inner-item > div > span');
+    $link->click();
+  }
+
+  /**
+   * @When I on the registration process
+   */
+  public function iOnTheRegistrationProcess()
+  {
+    $element = $this->getSession()->getPage();
+    $element->clickLink('תהליך ההרשמה');
+  }
+
 }
