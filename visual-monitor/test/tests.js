@@ -1,7 +1,7 @@
 'use strict';
 
 var shoovWebdrivercss = require('shoov-webdrivercss');
-var projectName = 'huji reg.pantheon';
+var projectName = 'huji registration';
 
 // This can be executed by passing the environment argument like this:
 // PROVIDER_PREFIX=browserstack SELECTED_CAPS=chrome mocha
@@ -69,28 +69,44 @@ describe('Visual monitor testing', function() {
       .webdrivercss(testName + '.homepage', {
         name: '1',
         exclude: [],
-        remove:
+        remove: [],
+        hide:
           [
-            'footer'
+            'footer',
+            '.announcement-tags'
           ],
-        screenWidth: selectedCaps == 'chrome' ? [960,1200] : undefined,
+        screenWidth: selectedCaps == 'chrome' ? [640,960,1200] : undefined,
       }, resultsCallback)
       .call(done);
   });
 
   it('should show the first degree page',function(done) {
     client
-      .url('http://dev-huji-reg.pantheon.io/courses/first-degree/faculty/all/grid/all')
+      .url(baseUrl + '/courses/first-degree/faculty/all/grid/all')
       .webdrivercss(testName + '.first-degree', {
         name: '1',
-        remove:
+        exclude: [],
+        remove: [],
+        hide:
           [
-            // Content
-            '.search-result-col',
-            // Sidebar.
-            '.sidebar-messages'
+            'footer',
           ],
-      }, shoovWebdrivercss.processResults)
+        screenWidth: selectedCaps == 'chrome' ? [640,960,1200] : undefined,
+      }, resultsCallback)
+      .call(done);
+  });
+
+  it('should show the footer page',function(done) {
+    client
+      .url(baseUrl + '/courses/first-degree/faculty/all/grid/all')
+      .webdrivercss(testName + '.footer', {
+        name: '1',
+        elem: 'footer',
+        exclude: [],
+        remove: [],
+        hide: [],
+        screenWidth: selectedCaps == 'chrome' ? [640,960,1200] : undefined,
+      }, resultsCallback)
       .call(done);
   });
 });
