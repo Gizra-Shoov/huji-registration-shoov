@@ -65,7 +65,7 @@ describe('Visual monitor testing', function() {
   it('should show the home page',function(done) {
     client
       .url('http://gizra:123@dev-huji-reg.pantheon.io')
-      .pause(10000)
+      .pause(12000)
       .webdrivercss(testName + '.homepage', {
         name: '1',
         exclude: [],
