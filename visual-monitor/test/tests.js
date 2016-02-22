@@ -80,33 +80,33 @@ describe('Visual monitor testing', function() {
       .call(done);
   });
 
-  it('should show the first degree page',function(done) {
-    client
-      .url(baseUrl + '/courses/first-degree/faculty/all/grid/all')
-      .webdrivercss(testName + '.first-degree', {
-        name: '1',
-        exclude: [],
-        remove: [],
-        hide:
-          [
-            'footer',
-          ],
-        screenWidth: selectedCaps == 'chrome' ? [640,960,1200] : undefined,
-      }, resultsCallback)
-      .call(done);
-  });
-
-  it('should show the footer page',function(done) {
-    client
-      .url(baseUrl + '/courses/first-degree/faculty/all/grid/all')
-      .webdrivercss(testName + '.footer', {
-        name: '1',
-        elem: 'footer',
-        exclude: [],
-        remove: [],
-        hide: [],
-        screenWidth: selectedCaps == 'chrome' ? [640,960,1200] : undefined,
-      }, resultsCallback)
-      .call(done);
-  });
+  //it('should show the first degree page',function(done) {
+  //  client
+  //    .url(baseUrl + '/courses/first-degree/faculty/all/grid/all')
+  //    .webdrivercss(testName + '.first-degree', {
+  //      name: '1',
+  //      exclude: [],
+  //      remove: [],
+  //      hide:
+  //        [
+  //          'footer',
+  //        ],
+  //      screenWidth: selectedCaps == 'chrome' ? [640,960,1200] : undefined,
+  //    }, resultsCallback)
+  //    .call(done);
+  //});
+  //
+  //it('should show the footer page',function(done) {
+  //  client
+  //    .url(baseUrl + '/courses/first-degree/faculty/all/grid/all')
+  //    .webdrivercss(testName + '.footer', {
+  //      name: '1',
+  //      elem: 'footer',
+  //      exclude: [],
+  //      remove: [],
+  //      hide: [],
+  //      screenWidth: selectedCaps == 'chrome' ? [640,960,1200] : undefined,
+  //    }, resultsCallback)
+  //    .call(done);
+  //});
 });
