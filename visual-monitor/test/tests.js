@@ -45,7 +45,7 @@ var caps = selectedCaps ? capsConfig[selectedCaps] : undefined;
 var providerPrefix = process.env.PROVIDER_PREFIX ? process.env.PROVIDER_PREFIX + '-' : '';
 var testName = selectedCaps ? providerPrefix + selectedCaps : providerPrefix + 'default';
 
-var baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'http://live-huji-reg.pantheon.io';
+var baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'http://info.huji.ac.il/';
 
 var resultsCallback = process.env.DEBUG ? console.log : shoovWebdrivercss.processResults;
 
@@ -64,7 +64,7 @@ describe('Visual monitor testing', function() {
 
   it('should show the home page',function(done) {
     client
-      .url('http://gizra:123@dev-huji-reg.pantheon.io')
+      .url(baseUrl)
       .pause(15000)
       .webdrivercss(testName + '.homepage', {
         name: '1',
@@ -80,33 +80,33 @@ describe('Visual monitor testing', function() {
       .call(done);
   });
 
-  //it('should show the first degree page',function(done) {
-  //  client
-  //    .url(baseUrl + '/courses/first-degree/faculty/all/grid/all')
-  //    .webdrivercss(testName + '.first-degree', {
-  //      name: '1',
-  //      exclude: [],
-  //      remove: [],
-  //      hide:
-  //        [
-  //          'footer',
-  //        ],
-  //      screenWidth: selectedCaps == 'chrome' ? [640,960,1200] : undefined,
-  //    }, resultsCallback)
-  //    .call(done);
-  //});
-  //
-  //it('should show the footer page',function(done) {
-  //  client
-  //    .url(baseUrl + '/courses/first-degree/faculty/all/grid/all')
-  //    .webdrivercss(testName + '.footer', {
-  //      name: '1',
-  //      elem: 'footer',
-  //      exclude: [],
-  //      remove: [],
-  //      hide: [],
-  //      screenWidth: selectedCaps == 'chrome' ? [640,960,1200] : undefined,
-  //    }, resultsCallback)
-  //    .call(done);
-  //});
+  it('should show the first degree page',function(done) {
+    client
+      .url(baseUrl + '/courses/first-degree/faculty/all/grid/all')
+      .webdrivercss(testName + '.first-degree', {
+        name: '1',
+        exclude: [],
+        remove: [],
+        hide:
+          [
+            'footer',
+          ],
+        screenWidth: selectedCaps == 'chrome' ? [640,960,1200] : undefined,
+      }, resultsCallback)
+      .call(done);
+  });
+
+  it('should show the footer page',function(done) {
+    client
+      .url(baseUrl + '/courses/first-degree/faculty/all/grid/all')
+      .webdrivercss(testName + '.footer', {
+        name: '1',
+        elem: 'footer',
+        exclude: [],
+        remove: [],
+        hide: [],
+        screenWidth: selectedCaps == 'chrome' ? [640,960,1200] : undefined,
+      }, resultsCallback)
+      .call(done);
+  });
 });
