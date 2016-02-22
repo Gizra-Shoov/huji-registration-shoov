@@ -45,7 +45,7 @@ var caps = selectedCaps ? capsConfig[selectedCaps] : undefined;
 var providerPrefix = process.env.PROVIDER_PREFIX ? process.env.PROVIDER_PREFIX + '-' : '';
 var testName = selectedCaps ? providerPrefix + selectedCaps : providerPrefix + 'default';
 
-var baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'http://dev-huji-reg.pantheon.io';
+var baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'http://live-huji-reg.pantheon.io';
 
 var resultsCallback = process.env.DEBUG ? console.log : shoovWebdrivercss.processResults;
 
@@ -65,7 +65,7 @@ describe('Visual monitor testing', function() {
   it('should show the home page',function(done) {
     client
       .url('http://gizra:123@dev-huji-reg.pantheon.io')
-      .pause(10000)
+      .pause(15000)
       .webdrivercss(testName + '.homepage', {
         name: '1',
         exclude: [],
