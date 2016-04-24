@@ -45,7 +45,7 @@ var caps = selectedCaps ? capsConfig[selectedCaps] : undefined;
 var providerPrefix = process.env.PROVIDER_PREFIX ? process.env.PROVIDER_PREFIX + '-' : '';
 var testName = selectedCaps ? providerPrefix + selectedCaps : providerPrefix + 'default';
 
-var baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'http://info.huji.ac.il/';
+var baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'http://info.huji.ac.il';
 
 var resultsCallback = process.env.DEBUG ? console.log : shoovWebdrivercss.processResults;
 
@@ -68,8 +68,6 @@ describe('Visual monitor testing', function() {
       .pause(15000)
       .webdrivercss(testName + '.homepage', {
         name: '1',
-        exclude: [],
-        remove: [],
         hide:
           [
             'footer',
@@ -85,12 +83,6 @@ describe('Visual monitor testing', function() {
       .url(baseUrl + '/courses/first-degree/faculty/all/grid/all')
       .webdrivercss(testName + '.first-degree', {
         name: '1',
-        exclude: [],
-        remove: [],
-        hide:
-          [
-            'footer',
-          ],
         screenWidth: selectedCaps == 'chrome' ? [640,960,1200] : undefined,
       }, resultsCallback)
       .call(done);
